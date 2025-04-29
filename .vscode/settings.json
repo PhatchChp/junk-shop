@@ -1,4 +1,6 @@
 {
+  "css.lint.unknownAtRules": "ignore",
+
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "tsconfig.json": "tsconfig.*.json, env.d.ts",

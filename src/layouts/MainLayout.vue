@@ -8,7 +8,9 @@ import MainNavbar from './MainNavbar.vue'
     <MainNavbar />
 
     <!-- Main Content -->
-    <slot></slot>
+    <div class="container max-w-7xl px-2 mt-28 lg:mt-40 xl:mt-48 mx-auto">
+      <slot></slot>
+    </div>
 
     <!-- Footer -->
     <footer></footer>

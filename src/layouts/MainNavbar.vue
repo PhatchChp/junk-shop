@@ -78,7 +78,7 @@ const menuClose = () => (isMobileMenuOpen.value = false)
 
     <!-- Mobile Menu -->
     <div
-      class="lg:hidden fixed inset-0 z-40"
+      class="lg:hidden fixed inset-0 z-50"
       :class="isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'"
     >
       <!-- Background Black -->
