@@ -27,9 +27,9 @@ const menuClose = () => (isMobileMenuOpen.value = false)
 </script>
 
 <template>
-  <div class="max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 z-50 px-4">
+  <div class="bg-white max-w-screen-2xl mx-auto fixed top-0 left-0 right-0 z-50 lg:px-4">
     <div
-      class="w-full flex justify-between items-center border border-gray-200 rounded-md shadow-xs px-6 my-4"
+      class="w-full flex justify-between items-center border border-gray-200 rounded-md shadow-xs px-6 lg:my-4"
     >
       <!-- Logo -->
       <span>
@@ -78,7 +78,7 @@ const menuClose = () => (isMobileMenuOpen.value = false)
 
     <!-- Mobile Menu -->
     <div
-      class="fixed inset-0 z-40"
+      class="lg:hidden fixed inset-0 z-40"
       :class="isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'"
     >
       <!-- Background Black -->
