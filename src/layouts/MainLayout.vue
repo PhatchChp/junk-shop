@@ -1,7 +1,11 @@
+<script setup lang="ts">
+import MainNavbar from './MainNavbar.vue'
+</script>
+
 <template>
   <main>
     <!-- Navbar -->
-    <div></div>
+    <MainNavbar />
 
     <!-- Main Content -->
     <slot></slot>

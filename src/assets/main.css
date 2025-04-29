@@ -1,1 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+
+body {
+  font-family: 'Bai Jamjuree', 'Montserrat', sans-serif;
+}
+
+@layer base {
+  .bg-primary-orange {
+    background-color: #ffa500;
+  }
+  .text-primary-orange {
+    color: #ffa500;
+  }
+  .border-primary-orange {
+    border-color: #ffa500;
+  }
+
+  /* hover */
+  .hover\:bg-primary-orange:hover {
+    background-color: #ffa500;
+  }
+  .hover\:text-primary-orange:hover {
+    color: #ffa500;
+  }
+  .hover\:border-primary-orange:hover {
+    border-color: #ffa500;
+  }
+
+  /* fill svg */
+  .fill-primary-orange {
+    fill: #ffa500;
+  }
+}
