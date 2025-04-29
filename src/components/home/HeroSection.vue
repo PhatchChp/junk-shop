@@ -33,9 +33,9 @@ import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
     </div>
 
     <!-- RIGHT: Image Hero -->
-    <div class="flex items-center justify-center m-4 lg:m-0">
+    <div class="flex items-center justify-center lg:m-0">
       <img
-        src="/src/assets/images/hero_2.jpg"
+        src="/src/assets/images/hero_1.jpg"
         alt="Hero Banner"
         class="mx-auto w-full sm:h-[30rem] lg:h-[560px] xl:h-[30rem] object-cover rounded-xl shadow"
       />
