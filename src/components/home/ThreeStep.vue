@@ -8,7 +8,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 const isMobile = ref(false)
 
 const checkScreenSize = () => {
-  isMobile.value = window.innerWidth <= 800
+  isMobile.value = window.innerWidth <= 880
 }
 
 onMounted(() => {
