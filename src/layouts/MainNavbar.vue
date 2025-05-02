@@ -11,7 +11,7 @@ const desktopMenus = ref([
   { name: 'ของเก่าที่เรารับซื้อ', link: 'category' },
   { name: 'ราคาวันนี้', link: 'price' },
   { name: 'บริการของเรา', link: 'service' },
-  { name: 'คำถามที่พบบ่อย', link: 'ask' },
+  { name: 'คำถามที่พบบ่อย', link: 'faq' },
 ])
 
 const mobileMenus = computed(() => [

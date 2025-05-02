@@ -9,6 +9,11 @@ body {
   .bg-primary-orange {
     background-color: #ffa500;
   }
+
+  .bg-primary-gray {
+    background-color: #f5f5f5;
+  }
+
   .text-primary-orange {
     color: #ffa500;
   }

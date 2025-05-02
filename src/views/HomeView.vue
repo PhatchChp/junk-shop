@@ -8,6 +8,7 @@ import subhero2 from '@/assets/images/pet_pack.jpg'
 import subhero3 from '@/assets/images/spare_part_2.jpg'
 import subhero4 from '@/assets/images/all_zinc.jpg'
 import ThreeStep from '@/components/home/ThreeStep.vue'
+import TypeOfAntiques from '@/components/home/TypeOfAntiques.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import ThreeStep from '@/components/home/ThreeStep.vue'
       <HeroSection />
       <SubHeroSection :images-url="[subhero1, subhero2, subhero3, subhero4]" />
       <ThreeStep />
+      <TypeOfAntiques />
     </main>
   </MainLayout>
 </template>
