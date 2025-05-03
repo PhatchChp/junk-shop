@@ -1,0 +1,63 @@
+<script setup lang="ts">
+import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
+import { typeMap, type CategoryType } from '@/constants/categoryTypes'
+import MainLayout from '@/layouts/MainLayout.vue'
+import { useCategoryStore } from '@/stores/category'
+import { computed, watch } from 'vue'
+import { useRoute, RouterLink } from 'vue-router'
+
+const category = useCategoryStore()
+const route = useRoute()
+
+const displayType = computed(() => {
+  const rawType = route.params.type
+  const type = Array.isArray(rawType) ? rawType[0] : rawType //แปลงให้เหลือ string เดียว เอาตัวแรก ถ้ามีหลายตัว
+  const isValid = type && type in typeMap
+  return isValid ? (type as CategoryType) : 'all'
+})
+
+const categoryMenu = [
+  { imageUrl: '', title: 'ทั้งหมด', subtitle: 'All', type: 'all' },
+  ...category.items.filter((item) => Object.keys(typeMap).includes(item.type as string)),
+]
+
+watch(
+  () => route.params.type,
+  (newType) => {
+    console.log(newType)
+  },
+)
+</script>
+
+<template>
+  <MainLayout>
+    <div class="flex justify-between">
+      <aside class="flex flex-col flex-none border-r border-gray-700 p-4">
+        <RouterLink
+          v-for="menu in categoryMenu"
+          :key="menu.type"
+          :to="{ name: 'category', params: { type: menu.type } }"
+          class="hover:bg-primary-gray rounded-md p-2 my-2"
+          :class="`${menu.type === displayType && 'bg-primary-gray rounded-md  font-semibold'}`"
+        >
+          {{ menu.title }}
+        </RouterLink>
+      </aside>
+
+      <div class="flex flex-1 flex-col items-center px-8 gap-4">
+        <h1 class="text-heading-36">ประเภทของเก่าที่เรารับซื้อ</h1>
+        <div class="flex my-8 gap-4">
+          <input class="w-2xl border border-gray-300 rounded-md p-2" placeholder="ค้นหาหมวดหมู่" />
+          <PrimaryButton name="ค้นหา" />
+        </div>
+
+        <div class="self-start">
+          <p class="text-body-bold-20">
+            ประเภท
+            <span class="text-primary-orange">{{ typeMap[displayType] }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </MainLayout>
+</template>
