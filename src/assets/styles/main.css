@@ -6,14 +6,10 @@ body {
 }
 
 @layer base {
+  /* Background Orange */
   .bg-primary-orange {
     background-color: #ffa500;
   }
-
-  .bg-primary-gray {
-    background-color: #f5f5f5;
-  }
-
   .text-primary-orange {
     color: #ffa500;
   }
@@ -21,7 +17,15 @@ body {
     border-color: #ffa500;
   }
 
-  /* hover */
+  /* Background Gray */
+  .bg-primary-gray {
+    background-color: #f5f5f5;
+  }
+  .text-primary-gray {
+    color: #f5f5f5;
+  }
+
+  /* Hover Orange */
   .hover\:bg-primary-orange:hover {
     background-color: #ffa500;
   }
@@ -30,6 +34,17 @@ body {
   }
   .hover\:border-primary-orange:hover {
     border-color: #ffa500;
+  }
+
+  /* Hover Gray */
+  .hover\:bg-primary-gray:hover {
+    background-color: #f5f5f5;
+  }
+  .hover\:text-primary-gray:hover {
+    color: #f5f5f5;
+  }
+  .hover\:border-primary-gray:hover {
+    border-color: #f5f5f5;
   }
 
   /* fill svg */

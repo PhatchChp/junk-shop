@@ -17,6 +17,10 @@
   @apply text-[36px] font-bold leading-snug;
 }
 
+.text-heading-30 {
+  @apply text-[30px] font-bold leading-snug;
+}
+
 /* ==== Body Regular ==== */
 .text-body-24 {
   @apply text-[24px] font-normal leading-relaxed;
