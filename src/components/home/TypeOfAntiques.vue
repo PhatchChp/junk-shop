@@ -13,9 +13,9 @@ const routeName = 'category'
   >
     <h1 class="text-heading-48">ประเภทของเก่าที่เรารับซื้อ</h1>
     <div class="grid grid-cols-4 gap-6">
-      <div v-for="item in category.items" :key="item.title">
+      <div v-for="item in category.items" :key="item.nameEN">
         <RouterLink :to="{ name: routeName, params: { type: item.type } }">
-          <CardImage :image-url="item.imageUrl" :title="item.title" :subtitle="item.subtitle" />
+          <CardImage :image-url="item.imageUrl" :title="item.nameTH" :subtitle="item.nameEN" />
         </RouterLink>
       </div>
     </div>

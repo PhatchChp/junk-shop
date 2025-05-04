@@ -11,13 +11,13 @@ const route = useRoute()
 
 const displayType = computed(() => {
   const rawType = route.params.type
-  const type = Array.isArray(rawType) ? rawType[0] : rawType //แปลงให้เหลือ string เดียว เอาตัวแรก ถ้ามีหลายตัว
-  const isValid = type && type in typeMap
-  return isValid ? (type as CategoryType) : 'all'
+  const categoryType = Array.isArray(rawType) ? rawType[0] : rawType //แปลงให้เหลือ string เดียว เอาตัวแรก ถ้ามีหลายตัว
+  const isValid = categoryType && categoryType in typeMap
+  return isValid ? (categoryType as CategoryType) : 'all'
 })
 
 const categoryMenu = [
-  { imageUrl: '', title: 'ทั้งหมด', subtitle: 'All', type: 'all' },
+  { imageUrl: '', nameTH: 'ทั้งหมด', nameEN: 'All', type: 'all' },
   ...category.items.filter((item) => Object.keys(typeMap).includes(item.type as string)),
 ]
 
@@ -37,10 +37,12 @@ watch(
           v-for="menu in categoryMenu"
           :key="menu.type"
           :to="{ name: 'category', params: { type: menu.type } }"
-          class="hover:bg-primary-gray rounded-md p-2 my-2"
-          :class="`${menu.type === displayType && 'bg-primary-gray rounded-md  font-semibold'}`"
+          :class="[
+            'hover:bg-primary-gray rounded-md p-2 my-2',
+            menu.type === displayType ? 'bg-primary-gray font-semibold' : '',
+          ]"
         >
-          {{ menu.title }}
+          {{ menu.nameTH }}
         </RouterLink>
       </aside>
 
@@ -54,7 +56,7 @@ watch(
         <div class="self-start">
           <p class="text-body-bold-20">
             ประเภท
-            <span class="text-primary-orange">{{ typeMap[displayType] }}</span>
+            <span class="text-primary-orange">{{ typeMap[displayType] || 'ทั้งหมด' }}</span>
           </p>
         </div>
       </div>
