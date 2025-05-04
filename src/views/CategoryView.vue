@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import PrimaryButton from '@/components/buttons/PrimaryButton.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import { typeMap, type CategoryType } from '@/constants/categoryTypes'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useCategoryStore } from '@/stores/category'
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 
 const category = useCategoryStore()
@@ -21,12 +21,9 @@ const categoryMenu = [
   ...category.items.filter((item) => Object.keys(typeMap).includes(item.type as string)),
 ]
 
-watch(
-  () => route.params.type,
-  (newType) => {
-    console.log(newType)
-  },
-)
+const handleSearch = (search: string) => {
+  console.log(search)
+}
 </script>
 
 <template>
@@ -48,11 +45,9 @@ watch(
 
       <div class="flex flex-1 flex-col items-center px-8 gap-4">
         <h1 class="text-heading-36">ประเภทของเก่าที่เรารับซื้อ</h1>
-        <div class="flex my-8 gap-4">
-          <input class="w-2xl border border-gray-300 rounded-md p-2" placeholder="ค้นหาหมวดหมู่" />
-          <PrimaryButton name="ค้นหา" />
-        </div>
+        <SearchBar @searchText="handleSearch" />
 
+        <!-- Content -->
         <div class="self-start">
           <p class="text-body-bold-20">
             ประเภท
