@@ -13,6 +13,7 @@ const search = () => {
   <div class="flex my-8 gap-4">
     <input
       v-model="searchInput"
+      @keyup.enter="search"
       class="w-2xl border border-gray-300 rounded-md p-2"
       placeholder="ค้นหาหมวดหมู่"
     />
