@@ -1,100 +1,60 @@
 import { defineStore } from 'pinia'
-import metals from '@/assets/images/front_shop.jpg'
-import { typeMap } from '@/constants/categoryTypes'
 
-export const useCategoryStore = defineStore('category', {
-  state: () => ({
-    items: [
-      {
-        imageUrl: metals,
-        nameTH: 'โลหะ',
-        nameEN: 'Metals',
-        type: 'metals',
-        detail: ['เหล็กหนา', 'เหล็กบาง', 'เหล็กหล่อ', 'เหล็กเส้น', 'เหล็กแป๊ป'],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'กระดาษ',
-        nameEN: 'Papers',
-        type: 'papers',
-        detail: ['กระดาษแข็ง', 'กระดาษเศษ', 'หนังสือพิมพ์', 'กระดาษขาวดำ', 'กระดาษลัง', 'หนังสือ'],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'ขวด / ขวดพลาสติก',
-        nameEN: 'Glass / Bottles',
-        type: 'glass-bottles',
-        detail: [
-          'ขวดแก้ว',
-          'ขวดพลาสติก',
-          'ขวดน้ำมันพืช',
-          'ขวดแชมพู',
-          'ขวดน้ำยาล้างจาน',
-          'ขวดน้ำยาล้างห้องน้ำ',
-          'ฯลฯ',
-        ],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'พลาสติก',
-        nameEN: 'Plastics',
-        type: 'plastics',
-        detail: ['พลาสติกกรอบ', 'พลาสติกรวม', 'แกลลอนขุ่น'],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'ทองแดง',
-        nameEN: 'Coppers',
-        type: 'coppers',
-        detail: [
-          'เส้นใหญ่ - เบอร์ 1',
-          'เส้นใหญ่ - เบอร์ 2',
-          'เส้นเล็ก - เบอร์ 3',
-          'เส้นเล็ก - เบอร์ 4',
-          'ทองแดงเผา',
-          'ทองแดงไม่เผา',
-        ],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'เครื่องใช้ไฟฟ้าเก่า',
-        nameEN: 'Old electric appliance',
-        type: 'electric-appliance',
-        detail: ['พัดลม', 'แอร์เก่า', 'ตู้เย็น', 'ไมโครเวฟ', 'ตู้แช่', 'ทีวี'],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'กระป๋อง / สังกะสี',
-        nameEN: 'Cans / Zinc',
-        type: 'cans-zinc',
-        detail: ['กระป๋องน้ำอัดลม', 'กระป๋องเบียร์', 'กระป๋องสี', 'สังกะสี'],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'อะไหล่ / เศษซากรถ',
-        nameEN: 'Spare part / Car scarp',
-        type: 'spare-part',
-        detail: [
-          'หม้อน้ำรถยนต์',
-          'แผงวงจร',
-          'คอมพิวเตอร์',
-          'อะไหล่รถ',
-          'ซากรถยนต์',
-          'จักรยาน',
-          'มอเตอร์ไซค์',
-          'เศษอะไหล่ต่างๆ',
-        ],
-      },
-      {
-        imageUrl: metals,
-        nameTH: 'อื่นๆ',
-        nameEN: 'Another',
-        type: 'another',
-        detail: ['สายยาง', 'ท่อน้ำ', 'โครงหลังคา', 'ชิ้นส่วนเครื่องจักร'],
-      },
-    ],
-    typeMap,
-  }),
-  getters: {},
-  actions: {},
+import { typeMap, type CategoryType } from '@/constants/categoryTypes'
+import { computed, ref } from 'vue'
+import { categoryItems, type CategoryItem } from '@/constants/categoryItems'
+
+export const useCategoryStore = defineStore('category', () => {
+  const items = categoryItems
+  const displayType = ref('all' as CategoryType)
+  const searchText = ref('')
+  const searchResult = ref<CategoryItem[]>([])
+
+  const setDisplayType = (type: CategoryType) => {
+    displayType.value = type
+  }
+
+  const menuItems = computed(() => {
+    return [
+      { nameTH: 'ทั้งหมด', nameEN: 'All', type: 'all' },
+      ...items.map(({ nameTH, nameEN, type }) => ({ nameTH, nameEN, type })),
+    ]
+  })
+
+  const filteredItems = computed(() => {
+    if (displayType.value === 'all') return items
+    return items.filter((item) => item.type === displayType.value)
+  })
+
+  const searchItems = (search: string) => {
+    return items
+      .map((item) => ({ ...item, nameEN: item.nameEN.toLowerCase() }))
+      .filter(
+        (item) =>
+          item.nameTH.includes(search) ||
+          item.nameEN.includes(search.toLocaleLowerCase()) ||
+          item.details.some((d) => d.includes(search)),
+      )
+  }
+
+  const handleSearch = (search: string) => {
+    searchText.value = search
+    searchResult.value = searchItems(searchText.value)
+  }
+
+  const isCategoryType = (value: string): value is CategoryType => {
+    return value in typeMap
+  }
+
+  return {
+    items,
+    displayType,
+    menuItems,
+    filteredItems,
+    searchText,
+    searchResult,
+    handleSearch,
+    setDisplayType,
+    isCategoryType,
+  }
 })
