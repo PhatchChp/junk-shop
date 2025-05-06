@@ -45,7 +45,14 @@ const menuClose = () => (isMobileMenuOpen.value = false)
           :key="menu.name"
           :class="`${menu.link === route.name ? 'border-primary-orange border-b-2 p-2' : ''}  hover:text-primary-orange`"
         >
-          <RouterLink :to="{ name: menu.link }">{{ menu.name }}</RouterLink>
+          <RouterLink
+            :to="
+              menu.link === 'category'
+                ? { name: menu.link, params: { type: 'all' } }
+                : { name: menu.link }
+            "
+            >{{ menu.name }}</RouterLink
+          >
         </li>
 
         <!-- Buttons -->
