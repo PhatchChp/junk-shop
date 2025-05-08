@@ -3,23 +3,20 @@ import metals from '@/assets/images/front_shop.jpg'
 export const categoryItems = [
   {
     imageUrl: metals,
-    nameTH: 'โลหะ',
-    nameEN: 'Metals',
+    name: { th: 'โลหะ', en: 'Metals' },
     type: 'metals',
     details: ['เหล็กหนา', 'เหล็กบาง', 'เหล็กหล่อ', 'เหล็กเส้น', 'เหล็กแป๊ป'],
   },
   {
     imageUrl: metals,
-    nameTH: 'กระดาษ',
-    nameEN: 'Papers',
+    name: { th: 'กระดาษ', en: 'Papers' },
     type: 'papers',
     details: ['กระดาษแข็ง', 'กระดาษเศษ', 'หนังสือพิมพ์', 'กระดาษขาวดำ', 'กระดาษลัง', 'หนังสือ'],
   },
   {
     imageUrl: metals,
-    nameTH: 'ขวด / ขวดพลาสติก',
-    nameEN: 'Glass / Bottles',
-    type: 'glass-bottles',
+    name: { th: 'ขวด / ขวดพลาสติก', en: 'Glass / Bottles' },
+    type: 'bottles',
     details: [
       'ขวดแก้ว',
       'ขวดพลาสติก',
@@ -32,15 +29,13 @@ export const categoryItems = [
   },
   {
     imageUrl: metals,
-    nameTH: 'พลาสติก',
-    nameEN: 'Plastics',
+    name: { th: 'พลาสติก', en: 'Plastics' },
     type: 'plastics',
     details: ['พลาสติกกรอบ', 'พลาสติกรวม', 'แกลลอนขุ่น'],
   },
   {
     imageUrl: metals,
-    nameTH: 'ทองแดง',
-    nameEN: 'Coppers',
+    name: { th: 'ทองแดง', en: 'Coppers' },
     type: 'coppers',
     details: [
       'เส้นใหญ่ - เบอร์ 1',
@@ -53,47 +48,94 @@ export const categoryItems = [
   },
   {
     imageUrl: metals,
-    nameTH: 'เครื่องใช้ไฟฟ้าเก่า',
-    nameEN: 'Old electric appliance',
-    type: 'electric-appliance',
-    details: ['พัดลม', 'แอร์เก่า', 'ตู้เย็น', 'ไมโครเวฟ', 'ตู้แช่', 'ทีวี'],
-  },
-  {
-    imageUrl: metals,
-    nameTH: 'กระป๋อง / สังกะสี',
-    nameEN: 'Cans / Zinc',
-    type: 'cans-zinc',
-    details: ['กระป๋องน้ำอัดลม', 'กระป๋องเบียร์', 'กระป๋องสี', 'สังกะสี'],
-  },
-  {
-    imageUrl: metals,
-    nameTH: 'อะไหล่ / เศษซากรถ',
-    nameEN: 'Spare part / Car scarp',
-    type: 'spare-part',
+    name: { th: 'เครื่องใช้ไฟฟ้าเก่า', en: 'Old electronics' },
+    type: 'electronics',
     details: [
-      'หม้อน้ำรถยนต์',
-      'แผงวงจร',
+      'พัดลม',
+      'แอร์',
+      'ตู้เย็น',
+      'ไมโครเวฟ',
+      'เครื่องซักผ้า',
+      'หม้อหุงข้าว',
+      'เครื่องทำน้ำอุ่น',
+      'เตาแก๊ส',
+      'เตารีด',
+      'ตู้แช่',
+      'ทีวี',
       'คอมพิวเตอร์',
-      'อะไหล่รถ',
-      'ซากรถยนต์',
-      'จักรยาน',
-      'มอเตอร์ไซค์',
-      'เศษอะไหล่ต่างๆ',
+      'หน้าจอ',
+      'อุปกรณ์อิเล็กทรอนิก',
     ],
   },
   {
     imageUrl: metals,
-    nameTH: 'อื่นๆ',
-    nameEN: 'Another',
+    name: { th: 'กระป๋อง', en: 'Cans' },
+    type: 'cans',
+    details: ['กระป๋องน้ำอัดลม', 'กระป๋องเบียร์', 'กระป๋องสี'],
+  },
+  {
+    imageUrl: metals,
+    name: { th: 'สังกะสี', en: 'Zincs' },
+    type: 'zincs',
+    details: ['สังกะสี'],
+  },
+  {
+    imageUrl: metals,
+    name: { th: 'อลูมิเนียม', en: 'Aluminum' },
+    type: 'aluminum',
+    details: ['อลูมิเนียม'],
+  },
+  {
+    imageUrl: metals,
+    name: { th: 'สแตนเลส', en: 'Stainless' },
+    type: 'stainless',
+    details: ['สแตนเลส'],
+  },
+  {
+    imageUrl: metals,
+    name: { th: 'ลังเบียร์ / ลังเหล้า', en: 'Beer Crate / Liquor Crate' },
+    type: 'crates',
+    details: [
+      'เบียร์ช้าง',
+      'เบียร์ลีโอ',
+      'เบียร์สิงห์',
+      'เบียร์ไฮนีเก้น',
+      'เบียร์อื่นๆ',
+      'เหล้าหงส์ทอง',
+      'เหล้าแสงโสม',
+      'เหล้าแม่โขง',
+      'เหล้า 285',
+      'เหล้าอื่นๆ',
+    ],
+    notes: 'รับเฉพาะลังที่มีขวดเปล่าครบ 12 ขวด ถ้าไม่ครบนับเป็นขวดแก้ว',
+  },
+  {
+    imageUrl: metals,
+    name: { th: 'อื่นๆ', en: 'Another' },
     type: 'another',
-    details: ['สายยาง', 'ท่อน้ำ', 'โครงหลังคา', 'ชิ้นส่วนเครื่องจักร'],
+    details: [
+      'หม้อน้ำรถยนต์',
+      'แบตเตอรี่รถยนต์',
+      'แบตเตอรี่แห้ง',
+      'แผงวงจร',
+      'อะไหล่รถ',
+      'เศษซากรถยนต์',
+      'จักรยาน',
+      'มอเตอร์ไซค์',
+      'เศษอะไหล่ต่างๆ',
+      'สายไฟ',
+      'เปลือกสายไฟ',
+      'สายยาง',
+      'ท่อน้ำ',
+      'ชิ้นส่วนเครื่องจักร',
+    ],
   },
 ]
 
 export type CategoryItem = {
   imageUrl: string
-  nameTH: string
-  nameEN: string
+  name: { th: string; en: string }
   type: string
   details: string[]
+  notes?: string
 }
