@@ -10,14 +10,10 @@ export const useCategoryStore = defineStore('category', () => {
   const searchText = ref('')
   const searchResult = ref<CategoryItem[]>([])
 
-  const setDisplayType = (type: CategoryType) => {
-    displayType.value = type
-  }
-
   const menuItems = computed(() => {
     return [
-      { nameTH: 'ทั้งหมด', nameEN: 'All', type: 'all' },
-      ...items.map(({ nameTH, nameEN, type }) => ({ nameTH, nameEN, type })),
+      { name: { th: 'ทั้งหมด', en: 'All' }, type: 'all' },
+      ...items.map(({ name: { th, en }, type }) => ({ name: { th, en }, type })),
     ]
   })
 
@@ -27,19 +23,36 @@ export const useCategoryStore = defineStore('category', () => {
   })
 
   const searchItems = (search: string) => {
-    return items
-      .map((item) => ({ ...item, nameEN: item.nameEN.toLowerCase() }))
-      .filter(
-        (item) =>
-          item.nameTH.includes(search) ||
-          item.nameEN.includes(search.toLocaleLowerCase()) ||
-          item.details.some((d) => d.includes(search)),
+    const lowerSearch = search.toLowerCase()
+    return items.filter((item) => {
+      const itemType = item.type.toLowerCase()
+      const typeLabel = typeMap[item.type as CategoryType]?.toLowerCase() || ''
+      const nameTh = item.name.th.toLowerCase()
+      const nameEn = item.name.en.toLowerCase()
+      const details = item.details.map((d) => d.toLowerCase())
+
+      return (
+        itemType.includes(lowerSearch) ||
+        typeLabel.includes(lowerSearch) ||
+        nameTh.includes(lowerSearch) ||
+        nameEn.includes(lowerSearch) ||
+        details.some((detail) => detail.includes(lowerSearch))
       )
+    })
   }
 
   const handleSearch = (search: string) => {
-    searchText.value = search
+    searchText.value = search.trim()
     searchResult.value = searchItems(searchText.value)
+  }
+
+  const resetSearchText = () => {
+    searchText.value = ''
+    searchResult.value = []
+  }
+
+  const setDisplayType = (type: CategoryType) => {
+    displayType.value = type
   }
 
   const isCategoryType = (value: string): value is CategoryType => {
@@ -55,6 +68,7 @@ export const useCategoryStore = defineStore('category', () => {
     searchResult,
     handleSearch,
     setDisplayType,
+    resetSearchText,
     isCategoryType,
   }
 })
