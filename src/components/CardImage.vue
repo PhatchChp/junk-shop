@@ -20,7 +20,7 @@ const props = defineProps<{
     <div class="flex justify-between p-2">
       <div class="grow">
         <p class="text-body-bold-20">{{ props.title }}</p>
-        <p class="text-label-18-gray">{{ props.subtitle }}</p>
+        <p class="text-label-18 text-gray">{{ props.subtitle }}</p>
       </div>
       <div class="self-center"><ChevronRight :size="30" color="gray" /></div>
     </div>

@@ -1,74 +1,87 @@
-@import 'tailwindcss';
+@layer utilities {
+  /* === Headings === */
+  .text-heading-48 {
+    @apply text-[48px] font-bold leading-tight;
+  }
 
-/* ==========================================================================
-   Typography Utilities
-   ========================================================================== */
+  .text-heading-44 {
+    @apply text-[44px] font-bold leading-tight;
+  }
 
-/* ==== Heading ==== */
-.text-heading-48 {
-  @apply text-[48px] font-bold leading-tight;
-}
+  .text-heading-36 {
+    @apply text-[36px] font-bold leading-snug;
+  }
 
-.text-heading-44 {
-  @apply text-[44px] font-bold leading-snug;
-}
+  .text-heading-30 {
+    @apply text-[30px] font-bold leading-snug;
+  }
 
-.text-heading-36 {
-  @apply text-[36px] font-bold leading-snug;
-}
+  /* === Body Regular === */
+  .text-body-24 {
+    @apply text-[24px] font-normal leading-relaxed;
+  }
 
-.text-heading-30 {
-  @apply text-[30px] font-bold leading-snug;
-}
+  .text-body-20 {
+    @apply text-[20px] font-normal leading-relaxed;
+  }
 
-/* ==== Body Regular ==== */
-.text-body-24 {
-  @apply text-[24px] font-normal leading-relaxed;
-}
+  .text-body-16 {
+    @apply text-[16px] font-normal leading-relaxed;
+  }
 
-.text-body-20 {
-  @apply text-[20px] font-normal leading-relaxed;
-}
+  .text-body-14 {
+    @apply text-[14px] font-normal leading-relaxed;
+  }
 
-.text-body-16 {
-  @apply text-[16px] font-normal leading-relaxed;
-}
+  /* === Body Medium === */
+  .text-body-medium-24 {
+    @apply text-[24px] font-medium leading-relaxed;
+  }
 
-/* ==== Body Medium ==== */
-.text-body-medium-24 {
-  @apply text-[24px] font-medium leading-relaxed;
-}
+  .text-body-medium-20 {
+    @apply text-[20px] font-medium leading-relaxed;
+  }
 
-.text-body-medium-20 {
-  @apply text-[20px] font-medium leading-relaxed;
-}
+  .text-body-medium-16 {
+    @apply text-[16px] font-medium leading-relaxed;
+  }
 
-.text-body-medium-16 {
-  @apply text-[16px] font-medium leading-relaxed;
-}
+  /* === Body Bold === */
+  .text-body-bold-24 {
+    @apply text-[24px] font-bold leading-relaxed;
+  }
 
-/* ==== Body Bold ==== */
-.text-body-bold-24 {
-  @apply text-[24px] font-bold leading-relaxed;
-}
+  .text-body-bold-20 {
+    @apply text-[20px] font-bold leading-relaxed;
+  }
 
-.text-body-bold-20 {
-  @apply text-[20px] font-bold leading-relaxed;
-}
+  .text-body-bold-16 {
+    @apply text-[16px] font-bold leading-relaxed;
+  }
 
-/* ==== Label/Caption ==== */
-.text-label-20-gray {
-  @apply text-[20px] font-medium tracking-wide text-[#4E5060];
-}
+  /* === Label/Caption === */
+  .text-label-20 {
+    @apply text-[20px] font-medium tracking-wide;
+  }
 
-.text-label-18-gray {
-  @apply text-[18px] font-medium tracking-wide text-[#4E5060];
-}
+  .text-label-18 {
+    @apply text-[18px] font-medium tracking-wide;
+  }
 
-.text-label-14 {
-  @apply text-[14px] font-medium tracking-wide;
-}
+  .text-label-16 {
+    @apply text-[16px] font-medium tracking-wide;
+  }
 
-.text-caption-12-gray {
-  @apply text-[12px] font-normal tracking-wide text-[#4E5060];
+  .text-label-14 {
+    @apply text-[14px] font-medium tracking-wide;
+  }
+
+  .text-caption-12 {
+    @apply text-[12px] font-normal tracking-wide;
+  }
+
+  /* === Text Color Modifier === */
+  .text-gray {
+    @apply text-[#4E5060];
+  }
 }

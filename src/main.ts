@@ -1,5 +1,4 @@
 import './assets/styles/main.css'
-import './assets/styles/typography.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
