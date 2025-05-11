@@ -11,7 +11,7 @@ const category = useCategoryStore()
 <template>
   <div class="flex">
     <aside
-      class="flex flex-col basis-56 shrink-0 border-r border-gray-700 p-4 sticky top-28 h-fit self-start"
+      class="flex flex-col basis-56 shrink-0 border-r border-gray-700 p-4 sticky top-28 overflow-y-auto max-h-[calc(100vh-7rem)]"
     >
       <div
         v-for="menu in category.menuItems"

@@ -7,7 +7,6 @@ import CategoryResult from '../category/CategoryResult.vue'
 
 const route = useRoute()
 const router = useRouter()
-
 const category = useCategoryStore()
 
 watch(

@@ -11,7 +11,7 @@ const category = useCategoryStore()
     <NoResult :text="category.searchText" />
   </div>
 
-  <div v-else-if="category.displayItems" class="self-start">
+  <div v-else-if="category.displayItems" class="self-start mb-8 md:mb-0">
     <p class="text-body-bold-20">
       {{ category.searchText ? 'ค้นหา' : 'ประเภท' }}
       <span class="text-primary-orange">{{
