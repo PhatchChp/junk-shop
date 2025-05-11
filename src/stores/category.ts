@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
-
-import { typeMap, type CategoryType } from '@/constants/categoryTypes'
 import { computed, ref } from 'vue'
+import type { Router } from 'vue-router'
+import { typeMap, type CategoryType } from '@/constants/categoryTypes'
 import { categoryItems, type CategoryItem } from '@/constants/categoryItems'
 
 export const useCategoryStore = defineStore('category', () => {
   const items = categoryItems
-  const displayType = ref('all' as CategoryType)
-  const searchText = ref('')
+  const displayType = ref<CategoryType>('all' as CategoryType)
+  const searchText = ref<string>('')
   const searchResult = ref<CategoryItem[]>([])
 
   const menuItems = computed(() => {
@@ -22,8 +22,10 @@ export const useCategoryStore = defineStore('category', () => {
     return items.filter((item) => item.type === displayType.value)
   })
 
-  const searchItems = (search: string) => {
+  const searchItems = (search: string): CategoryItem[] => {
     const lowerSearch = search.toLowerCase()
+    if (!lowerSearch) return []
+
     return items.filter((item) => {
       const itemType = item.type.toLowerCase()
       const typeLabel = typeMap[item.type as CategoryType]?.toLowerCase() || ''
@@ -41,9 +43,14 @@ export const useCategoryStore = defineStore('category', () => {
     })
   }
 
-  const handleSearch = (search: string) => {
-    searchText.value = search.trim()
-    searchResult.value = searchItems(searchText.value)
+  const handleSearch = (search: string): void => {
+    const trimmedValue = search.trim()
+    if (!trimmedValue) {
+      resetSearchText()
+      return
+    }
+    searchText.value = trimmedValue
+    searchResult.value = searchItems(trimmedValue)
   }
 
   const resetSearchText = () => {
@@ -56,7 +63,34 @@ export const useCategoryStore = defineStore('category', () => {
   }
 
   const isCategoryType = (value: string): value is CategoryType => {
-    return value in typeMap
+    return typeof value === 'string' && value in typeMap
+  }
+
+  const displayItems = computed(() => {
+    if (searchText.value && searchResult.value.length > 0) {
+      return searchResult.value
+    }
+    return filteredItems.value
+  })
+
+  const onClickMenu = (type: string, currentType: string, router: Router): void => {
+    if (currentType === type) {
+      resetSearchText()
+      setDisplayType(type as CategoryType)
+    } else {
+      router.push({ name: 'category', params: { type } })
+    }
+  }
+
+  const syncDisplayTypeFromRoute = (routeType: string | string[] | undefined) => {
+    const categoryType = Array.isArray(routeType) ? routeType[0] : routeType
+    resetSearchText()
+
+    if (typeof categoryType === 'string' && isCategoryType(categoryType)) {
+      setDisplayType(categoryType)
+    } else {
+      setDisplayType('all')
+    }
   }
 
   return {
@@ -66,9 +100,12 @@ export const useCategoryStore = defineStore('category', () => {
     filteredItems,
     searchText,
     searchResult,
+    displayItems,
+    onClickMenu,
     handleSearch,
     setDisplayType,
     resetSearchText,
     isCategoryType,
+    syncDisplayTypeFromRoute,
   }
 })
