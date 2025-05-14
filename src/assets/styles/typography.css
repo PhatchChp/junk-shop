@@ -29,6 +29,10 @@
     @apply text-[20px] font-normal leading-relaxed;
   }
 
+  .text-body-18 {
+    @apply text-[18px] font-normal leading-relaxed;
+  }
+
   .text-body-16 {
     @apply text-[16px] font-normal leading-relaxed;
   }
@@ -46,6 +50,10 @@
     @apply text-[20px] font-medium leading-relaxed;
   }
 
+  .text-body-medium-18 {
+    @apply text-[18px] font-medium leading-relaxed;
+  }
+
   .text-body-medium-16 {
     @apply text-[16px] font-medium leading-relaxed;
   }
@@ -57,6 +65,10 @@
 
   .text-body-bold-20 {
     @apply text-[20px] font-bold leading-relaxed;
+  }
+
+  .text-body-bold-18 {
+    @apply text-[18px] font-bold leading-relaxed;
   }
 
   .text-body-bold-16 {

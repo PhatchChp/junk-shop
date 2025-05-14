@@ -10,6 +10,7 @@ import subhero4 from '@/assets/images/all_zinc.jpg'
 import ThreeStep from '@/components/home/ThreeStep.vue'
 import TypeOfAntiques from '@/components/home/TypeOfAntiques.vue'
 import WhyChooseUs from '@/components/home/WhyChooseUs.vue'
+import OurValue from '@/components/home/OurValue.vue'
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import WhyChooseUs from '@/components/home/WhyChooseUs.vue'
       <ThreeStep />
       <TypeOfAntiques />
       <WhyChooseUs />
+      <OurValue />
     </main>
   </MainLayout>
 </template>
