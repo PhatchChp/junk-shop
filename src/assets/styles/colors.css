@@ -21,6 +21,17 @@
     @apply border-[#f5f5f5];
   }
 
+  /* Background Yellow */
+  .bg-primary-yellow {
+    @apply bg-[#ffdc7d];
+  }
+  .text-primary-yellow {
+    @apply text-[#ffdc7d];
+  }
+  .border-primary-yellow {
+    @apply border-[#ffdc7d];
+  }
+
   /* Hover */
   .hover\:bg-primary-orange:hover {
     @apply bg-[#ffa500];
@@ -42,8 +53,24 @@
     @apply border-[#f5f5f5];
   }
 
+  .hover\:bg-primary-yellow:hover {
+    @apply bg-[#ffdc7d];
+  }
+
+  .hover\:text-primary-yellow:hover {
+    @apply text-[#ffdc7d];
+  }
+
+  .hover\:border-primary-yellow:hover {
+    @apply border-[#ffdc7d];
+  }
+
   /* SVG fill */
   .fill-primary-orange {
     @apply fill-[#ffa500];
+  }
+
+  .fill-primary-yellow {
+    @apply fill-[#ffdc7d];
   }
 }
