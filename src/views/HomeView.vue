@@ -11,6 +11,7 @@ import ThreeStep from '@/components/home/ThreeStep.vue'
 import TypeOfAntiques from '@/components/home/TypeOfAntiques.vue'
 import WhyChooseUs from '@/components/home/WhyChooseUs.vue'
 import OurValue from '@/components/home/OurValue.vue'
+import PriceRateView from '@/views/PriceRateView.vue'
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import OurValue from '@/components/home/OurValue.vue'
       <TypeOfAntiques />
       <WhyChooseUs />
       <OurValue />
+      <PriceRateView />
     </main>
   </MainLayout>
 </template>
