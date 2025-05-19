@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NoResult from '@/components/NoResult.vue'
-import { typeMap } from '@/constants/categoryTypes'
 import { useCategoryStore } from '@/stores/category'
+import { getCategoryLabel } from '@/utils/categoryLabel'
 
 const category = useCategoryStore()
 </script>
@@ -15,7 +15,7 @@ const category = useCategoryStore()
     <p class="text-body-bold-20">
       {{ category.searchText ? 'ค้นหา' : 'ประเภท' }}
       <span class="text-primary-orange">{{
-        category.searchText || typeMap[category.displayType]
+        category.searchText || getCategoryLabel(category.displayType)
       }}</span>
     </p>
     <div v-for="item in category.displayItems" :key="item.name.en">

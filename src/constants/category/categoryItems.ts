@@ -1,6 +1,7 @@
 import metals from '@/assets/images/front_shop.jpg'
+import type { CategoryItem } from '@/types/category'
 
-export const categoryItems = [
+export const categoryItems: CategoryItem[] = [
   {
     imageUrl: metals,
     name: { th: 'โลหะ', en: 'Metals' },
@@ -131,11 +132,3 @@ export const categoryItems = [
     ],
   },
 ]
-
-export type CategoryItem = {
-  imageUrl: string
-  name: { th: string; en: string }
-  type: string
-  details: string[]
-  notes?: string
-}

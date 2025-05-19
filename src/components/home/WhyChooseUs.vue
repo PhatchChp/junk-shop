@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Wave from '@/assets/wave.svg?component'
-import CardIcon from '../CardIcon.vue'
+import CardIcon from '../cards/CardIcon.vue'
 import JusticIcon from '@/components/icons/justic_icon.png'
 import RecycleIcon from '@/components/icons/recycle_icon.png'
 import ClockIcon from '@/components/icons/clock_icon.png'

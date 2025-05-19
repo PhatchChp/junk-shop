@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Scrollbar } from 'swiper/modules'
 import { useCategoryStore } from '@/stores/category'
 import { RouterLink } from 'vue-router'
-import CardImage from '../CardImage.vue'
+import CardImage from '../cards/CardImage.vue'
 import 'swiper/css'
 import 'swiper/css/scrollbar'
 

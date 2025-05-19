@@ -1,12 +1,14 @@
+import { categoryItems } from '@/constants/category/categoryItems'
+import { typeMap } from '@/constants/category/categoryTypesMap'
+import type { CategoryItem, CategoryType } from '@/types/category'
+import { getCategoryLabel } from '@/utils/categoryLabel'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { Router } from 'vue-router'
-import { typeMap, type CategoryType } from '@/constants/categoryTypes'
-import { categoryItems, type CategoryItem } from '@/constants/categoryItems'
 
 export const useCategoryStore = defineStore('category', () => {
   const items = categoryItems
-  const displayType = ref<CategoryType>('all' as CategoryType)
+  const displayType = ref<CategoryType>('all')
   const searchText = ref<string>('')
   const searchResult = ref<CategoryItem[]>([])
 
@@ -28,7 +30,7 @@ export const useCategoryStore = defineStore('category', () => {
 
     return items.filter((item) => {
       const itemType = item.type.toLowerCase()
-      const typeLabel = typeMap[item.type as CategoryType]?.toLowerCase() || ''
+      const typeLabel = getCategoryLabel(item.type as CategoryType)?.toLowerCase() || ''
       const nameTh = item.name.th.toLowerCase()
       const nameEn = item.name.en.toLowerCase()
       const details = item.details.map((d) => d.toLowerCase())

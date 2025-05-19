@@ -13,5 +13,3 @@ export const typeMap = {
   crates: 'ลังเบียร์ / ลังเหล้า',
   another: 'อื่นๆ',
 } as const
-
-export type CategoryType = keyof typeof typeMap
