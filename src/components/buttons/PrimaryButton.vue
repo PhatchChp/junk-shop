@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { ButtonHTMLAttributes } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const props = defineProps<{
   name: string
-  click?: () => void
   to?: string | object
+  type?: ButtonHTMLAttributes['type']
 }>()
 
 const baseClass =
@@ -13,5 +14,7 @@ const baseClass =
 
 <template>
   <RouterLink v-if="props.to" :to="props.to" :class="baseClass">{{ props.name }}</RouterLink>
-  <button v-else @click="props.click" :class="baseClass">{{ props.name }}</button>
+  <button v-else @click="$emit('click', $event)" :class="baseClass" :type="props.type ?? 'button'">
+    {{ props.name }}
+  </button>
 </template>

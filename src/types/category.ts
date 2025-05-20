@@ -9,3 +9,8 @@ export type CategoryItem = {
   details: string[]
   notes?: string
 }
+
+export type CategoryMenuItem = {
+  name: { th: string; en: string }
+  type: string
+}
