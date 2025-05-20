@@ -19,6 +19,15 @@ export const useCategoryStore = defineStore('category', () => {
     ]
   })
 
+  const navigateToType = (type: string, router: Router): void => {
+    if (displayType.value === type) {
+      resetSearchText()
+      setDisplayType(type)
+    } else {
+      router.push({ name: 'category', params: { type } })
+    }
+  }
+
   const filteredItems = computed(() => {
     if (displayType.value === 'all') return items
     return items.filter((item) => item.type === displayType.value)
@@ -75,15 +84,6 @@ export const useCategoryStore = defineStore('category', () => {
     return filteredItems.value
   })
 
-  const onClickMenu = (type: string, currentType: string, router: Router): void => {
-    if (currentType === type) {
-      resetSearchText()
-      setDisplayType(type as CategoryType)
-    } else {
-      router.push({ name: 'category', params: { type } })
-    }
-  }
-
   const syncDisplayTypeFromRoute = (routeType: string | string[] | undefined) => {
     const categoryType = Array.isArray(routeType) ? routeType[0] : routeType
     resetSearchText()
@@ -103,7 +103,7 @@ export const useCategoryStore = defineStore('category', () => {
     searchText,
     searchResult,
     displayItems,
-    onClickMenu,
+    navigateToType,
     handleSearch,
     setDisplayType,
     resetSearchText,
