@@ -19,7 +19,7 @@ export const useCategoryStore = defineStore('category', () => {
     ]
   })
 
-  const navigateToType = (type: string, router: Router): void => {
+  const navigateToType = (type: CategoryType, router: Router): void => {
     if (displayType.value === type) {
       resetSearchText()
       setDisplayType(type)

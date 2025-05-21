@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import { useCategoryStore } from '@/stores/category'
-import CategoryResult from '../CategoryResult.vue'
+import CategoryResult from '@/components/category/CategoryResult.vue'
 import SearchBar from '@/components/SearchBar.vue'
-import CategoryMenuDesktop from '../desktop/CategoryMenuDesktop.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { watch } from 'vue'
+import DesktopMenu from '@/layouts/DesktopMenu.vue'
+import type { CategoryType } from '@/types/category'
 
 const route = useRoute()
 const router = useRouter()
 const category = useCategoryStore()
 
+const menuItems = category.menuItems.map((item) => ({
+  label: item.name.th,
+  value: item.type,
+}))
+
 const handleClickMenu = (type: string) => {
-  category.navigateToType(type, router)
+  category.navigateToType(type as CategoryType, router)
 }
 
 watch(
@@ -23,9 +29,9 @@ watch(
 
 <template>
   <div class="flex">
-    <CategoryMenuDesktop
-      :menuItems="category.menuItems"
-      :selectedType="category.displayType"
+    <DesktopMenu
+      :menuItems="menuItems"
+      :selectedMenu="category.displayType"
       @clickMenu="handleClickMenu"
     />
 

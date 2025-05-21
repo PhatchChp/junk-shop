@@ -3,8 +3,8 @@ import { useCategoryStore } from '@/stores/category'
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue'
-import CategoryMobile from '@/components/category/mobile/CategoryMobile.vue'
-import CategoryDesktop from '@/components/category/desktop/CategoryDesktop.vue'
+import CategoryMobile from '@/components/category/CategoryMobile.vue'
+import CategoryDesktop from '@/components/category/CategoryDesktop.vue'
 
 const route = useRoute()
 const category = useCategoryStore()

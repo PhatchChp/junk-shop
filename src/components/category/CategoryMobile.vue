@@ -3,16 +3,23 @@ import { useCategoryStore } from '@/stores/category'
 import { watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import SearchBar from '@/components/SearchBar.vue'
-import CategoryResult from '../CategoryResult.vue'
-import CategoryMenuMobile from '../mobile/CategoryMenuMobile.vue'
+import CategoryResult from '@/components/category/CategoryResult.vue'
+import MobileMenu from '@/layouts/MobileMenu.vue'
+import type { CategoryType } from '@/types/category'
 
 const route = useRoute()
 const router = useRouter()
 const category = useCategoryStore()
 
+const menuItems = category.menuItems.map((item) => ({
+  label: item.name.th,
+  value: item.type,
+}))
+
 const handleClickMenu = (type: string) => {
-  category.navigateToType(type, router)
+  category.navigateToType(type as CategoryType, router)
 }
+
 watch(
   () => route.params.type,
   (newType) => category.syncDisplayTypeFromRoute(newType),
@@ -21,11 +28,11 @@ watch(
 </script>
 
 <template>
-  <section class="flex flex-col gap-3">
+  <div class="flex flex-col gap-3">
     <h1 class="text-heading-30">ประเภทของเก่าที่เรารับซื้อ</h1>
-    <CategoryMenuMobile
-      :menuItems="category.menuItems"
-      :selectedType="category.displayType"
+    <MobileMenu
+      :menuItems="menuItems"
+      :selectedMenu="category.displayType"
       @clickMenu="handleClickMenu"
     />
     <SearchBar
@@ -34,5 +41,5 @@ watch(
       @clearSearch="category.resetSearchText"
     />
     <CategoryResult />
-  </section>
+  </div>
 </template>
