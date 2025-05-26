@@ -12,12 +12,17 @@ export const useCategoryStore = defineStore('category', () => {
   const searchText = ref<string>('')
   const searchResult = ref<CategoryItem[]>([])
 
-  const menuItems = computed(() => {
-    return [
-      { name: { th: 'ทั้งหมด', en: 'All' }, type: 'all' },
-      ...items.map(({ name: { th, en }, type }) => ({ name: { th, en }, type })),
-    ]
-  })
+  const fetchCategoryItems = [
+    { name: { th: 'ทั้งหมด', en: 'All' }, type: 'all' },
+    ...items.map(({ name: { th, en }, type }) => ({ name: { th, en }, type })),
+  ]
+
+  const menuItems = computed(() =>
+    fetchCategoryItems.map((category) => ({
+      label: category.name.th,
+      value: category.type,
+    })),
+  )
 
   const navigateToType = (type: CategoryType, router: Router): void => {
     if (displayType.value === type) {
