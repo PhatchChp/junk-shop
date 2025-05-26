@@ -1,4 +1,4 @@
-import type { GroupItemsPrice } from '@/types/price'
+import type { GroupItemsPrice } from '@/types/priceRate'
 
 export const groupedItemsPrice: GroupItemsPrice = {
   metals: [

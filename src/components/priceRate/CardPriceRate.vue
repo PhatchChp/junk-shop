@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ItemPrice } from '@/types/price'
+import type { ItemPrice } from '@/types/priceRate'
 import { getCategoryLabel } from '@/utils/categoryLabel'
 import { formatPrice } from '@/utils/fomatter'
 import { Triangle } from 'lucide-vue-next'

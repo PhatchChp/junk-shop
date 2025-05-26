@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CategoryView from '@/views/CategoryView.vue'
+import PriceRateView from '@/views/PriceRateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,9 +17,9 @@ const router = createRouter({
       component: CategoryView,
     },
     {
-      path: '/price',
-      name: 'price',
-      component: HomeView,
+      path: '/price-rate/:type?',
+      name: 'price-rate',
+      component: PriceRateView,
     },
     {
       path: '/service',
