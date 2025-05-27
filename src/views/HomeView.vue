@@ -12,6 +12,7 @@ import TypeOfAntiques from '@/components/home/TypeOfAntiques.vue'
 import WhyChooseUs from '@/components/home/WhyChooseUs.vue'
 import OurValue from '@/components/home/OurValue.vue'
 import PriceRate from '@/components/home/PriceRate.vue'
+import ContactUs from '@/components/home/ContactUs.vue'
 </script>
 
 <template>
@@ -24,6 +25,7 @@ import PriceRate from '@/components/home/PriceRate.vue'
       <WhyChooseUs />
       <OurValue />
       <PriceRate />
+      <ContactUs />
     </main>
   </MainLayout>
 </template>

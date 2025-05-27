@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MainFooter from './MainFooter.vue'
 import MainNavbar from './MainNavbar.vue'
 </script>
 
@@ -13,6 +14,6 @@ import MainNavbar from './MainNavbar.vue'
     </div>
 
     <!-- Footer -->
-    <footer></footer>
+    <MainFooter />
   </main>
 </template>

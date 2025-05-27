@@ -34,7 +34,7 @@ const menuClose = () => (isMobileMenuOpen.value = false)
       <!-- Logo -->
       <span>
         <RouterLink :to="{ name: 'home' }"
-          ><img class="h-[74px] object-contain" src="../assets/logo.svg" alt="Logo"
+          ><img class="h-[74px] object-contain" src="/images/logo.svg" alt="Logo"
         /></RouterLink>
       </span>
 
