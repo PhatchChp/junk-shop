@@ -28,7 +28,7 @@ const categoryStore = useCategoryStore()
       <div class="space-y-4">
         <h3 class="text-base font-semibold">เมนู</h3>
         <ul class="space-y-2 text-sm">
-          <li v-for="menu in menuStore.mobileMenus" :key="menu.link">
+          <li v-for="menu in menuStore.menus" :key="menu.link">
             <a href="#" class="hover:text-primary transition-colors duration-200">{{
               menu.name
             }}</a>
