@@ -9,20 +9,16 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div
-    class="border border-gray-200 bg-white rounded-2xl max-w-[280px] max-h-[280px] cursor-pointer shadow-2xs"
-  >
-    <img
-      :src="props.imageUrl"
-      :alt="props.title"
-      class="object-cover w-[280px] h-[186px] rounded-t-2xl"
-    />
-    <div class="flex justify-between p-2">
-      <div class="grow">
-        <p class="text-body-bold-20">{{ props.title }}</p>
-        <p class="text-label-18 text-gray">{{ props.subtitle }}</p>
+  <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div class="aspect-[4/3] w-full">
+      <img :src="props.imageUrl" :alt="props.title" class="w-full h-full object-cover" />
+    </div>
+    <div class="flex items-center justify-between p-4">
+      <div class="text-left">
+        <p class="text-base font-semibold truncate">{{ props.title }}</p>
+        <p class="text-sm text-gray-500 truncate">{{ props.subtitle }}</p>
       </div>
-      <div class="self-center"><ChevronRight :size="30" color="gray" /></div>
+      <ChevronRight :size="24" class="text-gray-400" />
     </div>
   </div>
 </template>

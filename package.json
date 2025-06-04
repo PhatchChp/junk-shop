@@ -15,9 +15,9 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@tailwindcss/vite": "^4.1.4",
+    "@vueuse/motion": "^3.0.3",
     "lucide-vue-next": "^0.505.0",
     "pinia": "^3.0.1",
-    "swiper": "^11.2.6",
     "tailwindcss": "^4.1.4",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

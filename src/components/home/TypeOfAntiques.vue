@@ -1,37 +1,73 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Scrollbar } from 'swiper/modules'
 import { useCategoryStore } from '@/stores/category'
 import { RouterLink } from 'vue-router'
 import CardImage from '../cards/CardImage.vue'
-import 'swiper/css'
-import 'swiper/css/scrollbar'
+import PrimaryButton from '../buttons/PrimaryButton.vue'
 
 const category = useCategoryStore()
 const routeName = 'category'
-const modules = [Scrollbar]
 </script>
 
 <template>
-  <div
-    class="flex flex-col justify-center items-center gap-6 my-20 p-8 bg-primary-gray rounded-2xl"
-  >
-    <h1 class="text-heading-36 md:text-heading-48 text-center">ประเภทของเก่าที่เรารับซื้อ</h1>
-    <div class="w-full max-w-screen-xl px-4">
-      <Swiper
-        :modules="modules"
-        :slides-per-view="'auto'"
-        :space-between="16"
-        :grab-cursor="true"
-        :scrollbar="{ draggable: true }"
-        class="mySwiper"
+  <section class="w-full py-16 bg-primary-gray my-20">
+    <div class="container mx-auto px-4 max-w-screen-xl text-center">
+      <!-- Header with animation -->
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: -30 }"
+        :visible-once="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
       >
-        <SwiperSlide v-for="item in category.items" :key="item.type" class="!w-[280px] mb-10">
-          <RouterLink :to="{ name: routeName, params: { type: item.type } }">
+        <h2 class="text-heading-36 md:text-heading-48 font-semibold mb-10">
+          ประเภทของเก่าที่เรารับซื้อ
+        </h2>
+      </div>
+
+      <!-- Cards Grid with staggered animation -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center"
+      >
+        <div
+          v-for="(item, index) in category.items.slice(0, 8)"
+          :key="item.type"
+          v-motion
+          :initial="{ opacity: 0, y: 60, scale: 0.8 }"
+          :visible-once="{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+              delay: index * 150,
+              duration: 600,
+              ease: 'easeOut',
+            },
+          }"
+          class="w-full max-w-[280px]"
+        >
+          <RouterLink
+            :to="{ name: routeName, params: { type: item.type } }"
+            class="hover:scale-[1.03] transition-transform duration-200 block"
+          >
             <CardImage :image-url="item.imageUrl" :title="item.name.th" :subtitle="item.name.en" />
           </RouterLink>
-        </SwiperSlide>
-      </Swiper>
+        </div>
+      </div>
+
+      <div
+        v-motion
+        :initial="{ opacity: 0, y: 30 }"
+        :visible-once="{
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay: 1200,
+            duration: 600,
+            ease: 'easeOut',
+          },
+        }"
+        class="inline-flex items-center mt-10"
+      >
+        <PrimaryButton name="ดูทั้งหมด" :to="{ name: 'category', params: { type: 'all' } }" />
+      </div>
     </div>
-  </div>
+  </section>
 </template>

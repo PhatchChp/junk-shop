@@ -7,8 +7,6 @@ export const useMenuStore = defineStore('menu', () => {
   const isAnimating = ref(false)
   const categoryStore = useCategoryStore()
 
-  console.log(categoryStore.menuItems)
-
   const menus = ref([
     { name: 'หน้าแรก', link: 'home' },
     {
